@@ -1,0 +1,24 @@
+import java.util.stream.*;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	
+	
+   String number="00123456700";
+    if (number.startsWith("-")) {
+            number = number.substring(1);
+        }
+   Map<String,Long> res= number.chars().mapToObj(ch->(ch-'0'))
+                 .collect(Collectors.groupingBy(n->n==0?"Zero" : (n%2==0?"Even":"Odd"),Collectors.counting()));
+                 
+    System.out.println("Number of Even digits are : "+res.getOrDefault("Even",0L));
+    System.out.println("Number of Zeros digits are : "+res.getOrDefault("Zero",0L));
+    System.out.println("Number of Odd digits are : "+res.getOrDefault("Odd",0L));
+    
+      
+    
+
+	}
+}
